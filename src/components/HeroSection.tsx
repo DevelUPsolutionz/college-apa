@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, PhoneCall, Sparkles } from 'lucide-react';
+import { currentAcademicYear } from '../utils/academicYear';
 
 interface HeroSectionProps {
   totalColleges: number;
@@ -95,10 +96,10 @@ export function HeroSection({
             transition={{ duration: 0.55 }}
             className="lg:col-span-7"
           >
-            {/* Pill Badge matching Edura ("35% OFF" style) */}
+            {/* Pill Badge matching Edura ("35% OFF" style) - Dynamic for all future years */}
             <div className="flex items-center gap-3">
               <span className="rounded-full bg-[#2563EB] px-3.5 py-1 text-xs font-black tracking-wider text-white uppercase shadow-sm">
-                2026–27 ADMISSIONS
+                {currentAcademicYear.badgeLabel}
               </span>
               <span className="text-xs font-bold tracking-widest text-slate-300 uppercase">
                 DIRECT COUNSELLING WITH DR. B. RAMESH

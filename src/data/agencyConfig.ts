@@ -16,5 +16,5 @@ export const agencyConfig: AgencyConfig = {
     linkedin: 'https://linkedin.com',
     youtube: 'https://youtube.com',
   },
-  copyrightYear: 2026,
+  copyrightYear: new Date().getFullYear(),
 };

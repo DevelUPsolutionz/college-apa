@@ -15,6 +15,7 @@ import {
 import { agencyConfig } from '../data/agencyConfig';
 import { collegesData } from '../data/tamilNaduData';
 import type { College, Course } from '../types/admissions';
+import { currentAcademicYear } from '../utils/academicYear';
 
 interface ApplicationFormPageViewProps {
   initialCollege?: College | null;
@@ -114,7 +115,7 @@ export function ApplicationFormPageView({
       .filter(([, checked]) => checked)
       .map(([name]) => name);
 
-    return `🎓 *TAMIL NADU ADMISSION APPLICATION — 2026-27*
+    return `🎓 *TAMIL NADU ADMISSION APPLICATION — ${currentAcademicYear.shortYear}*
 *College APA Educational Guidance Centre*
 Chief Counsellor: Dr. B. Ramesh (+91 99528 87324)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -231,7 +232,7 @@ _Kindly review this application and guide me on admission procedure, transparent
               />
               <div>
                 <span className="text-xs font-bold tracking-wider text-[#1D4ED8] uppercase">
-                  Official Admission Desk • 2026-27
+                  Official Admission Desk • {currentAcademicYear.shortYear}
                 </span>
                 <h1 className="font-display text-2xl sm:text-3xl font-black text-[#0F2239]">
                   Student Admission Application Form

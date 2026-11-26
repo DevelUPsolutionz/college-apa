@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { scholarshipsData } from '../data/tamilNaduData';
+import { currentAcademicYear } from '../utils/academicYear';
 
 interface ScholarshipsSectionProps {
   onEnquire?: () => void;
@@ -132,7 +133,7 @@ export function ScholarshipsSection({ onEnquire }: ScholarshipsSectionProps) {
                       {/* Top Header beside the blue corner */}
                       <div className="pl-16 sm:pl-20 min-h-[56px] flex flex-col justify-center">
                         <span className="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">
-                          Eligible for 2026-27 Intake
+                          Eligible for {currentAcademicYear.shortYear} Intake
                         </span>
                         <h3 className="font-display mt-0.5 text-base sm:text-lg font-black text-[#0F2239] uppercase tracking-wide">
                           {sch.title}

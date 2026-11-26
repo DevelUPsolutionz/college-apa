@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle2, Phone, Sparkles } from 'lucide-react';
 import { agencyConfig } from '../data/agencyConfig';
 import { counsellingStreams } from '../data/tamilNaduData';
+import { currentAcademicYear } from '../utils/academicYear';
 
 interface CounsellingGuidanceBannerProps {
   onEnquire?: () => void;
@@ -104,7 +105,7 @@ export function CounsellingGuidanceBanner({ onEnquire }: CounsellingGuidanceBann
             {/* Small Eyebrow Pill */}
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold tracking-wider text-blue-300 uppercase">
               <Sparkles className="h-3.5 w-3.5 text-[#38BDF8]" />
-              <span>Are You Ready for 2026-27 Counselling?</span>
+              <span>Are You Ready for {currentAcademicYear.shortYear} Counselling?</span>
             </div>
 
             {/* Main Bold Headline */}
