@@ -8,9 +8,10 @@ interface NavbarProps {
 
 const navLinks = [
   { label: 'Home', target: 'home' },
+  { label: 'About Us', target: 'about' },
   { label: 'Tamil Nadu Zones', target: 'zones' },
   { label: 'Gallery', target: 'gallery' },
-  { label: 'Scholarships', target: 'about' },
+  { label: 'Scholarships', target: 'scholarships' },
   { label: 'Admission Enquiry', target: 'enquiry' },
   { label: 'Contact', target: 'contact' },
 ];

@@ -11,6 +11,7 @@ import { CollegesPageView } from './components/CollegesPageView';
 import { ContactFooter } from './components/ContactFooter';
 import { HeroSection } from './components/HeroSection';
 import { Navbar } from './components/Navbar';
+import { ScholarshipsSection } from './components/ScholarshipsSection';
 import { ZonesHomeView } from './components/ZonesHomeView';
 import { agencyConfig } from './data/agencyConfig';
 import { collegesData, tamilNaduZones } from './data/tamilNaduData';
@@ -100,6 +101,13 @@ export function App() {
               onTalkToExpert={() => scrollToSection('enquiry')}
             />
 
+            {/* 2nd Section: About College APA & Dr. B. Ramesh Advisory */}
+            <AboutAgencySection
+              onExploreZones={() => scrollToSection('zones')}
+              onEnquire={() => scrollToSection('enquiry')}
+            />
+
+            {/* 3rd Section: Tamil Nadu Discovery Zones */}
             <ZonesHomeView
               zones={tamilNaduZones}
               colleges={collegesData}
@@ -107,15 +115,19 @@ export function App() {
               onViewAllColleges={handleViewAllColleges}
             />
 
-            {/* Featured Campus & Counselling Event Gallery */}
+            {/* 4th Section: Featured Campus & Counselling Event Gallery */}
             <CampusGallerySection />
 
+            {/* 5th Section: Government & Merit Scholarships */}
+            <ScholarshipsSection
+              onEnquire={() => scrollToSection('enquiry')}
+            />
+
+            {/* 6th Section: Admission Enquiry Form */}
             <AdmissionEnquirySection
               colleges={collegesData}
               prefill={enquiryPrefill}
             />
-
-            <AboutAgencySection />
           </>
         )}
 

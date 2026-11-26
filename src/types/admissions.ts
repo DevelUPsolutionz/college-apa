@@ -80,6 +80,7 @@ export interface ScholarshipItem {
 export interface AgencyConfig {
   brandName: string;
   brandTagline: string;
+  chiefAdvisor?: string;
   phone: string;
   whatsappNumber: string;
   whatsappDisplay: string;

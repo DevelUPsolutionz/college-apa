@@ -3,6 +3,7 @@ import type { AgencyConfig } from '../types/admissions';
 export const agencyConfig: AgencyConfig = {
   brandName: 'College APA',
   brandTagline: 'Admission & Counselling Advisory • Dr. B. Ramesh',
+  chiefAdvisor: 'Dr. B. Ramesh',
   phone: '+91 99528 87324',
   whatsappNumber: '919952887324',
   whatsappDisplay: '+91 99528 87324',
