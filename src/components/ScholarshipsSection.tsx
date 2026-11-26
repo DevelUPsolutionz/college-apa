@@ -1,5 +1,5 @@
-import { Award, CheckCircle2, Compass, GraduationCap, ShieldAlert } from 'lucide-react';
-import { counsellingStreams, scholarshipsData } from '../data/tamilNaduData';
+import { Award, CheckCircle2, GraduationCap, ShieldAlert } from 'lucide-react';
+import { scholarshipsData } from '../data/tamilNaduData';
 
 interface ScholarshipsSectionProps {
   onEnquire?: () => void;
@@ -82,36 +82,6 @@ export function ScholarshipsSection({ onEnquire }: ScholarshipsSectionProps) {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Counselling Streams Banner */}
-        <div className="mt-12 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
-          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center">
-            <div className="max-w-xl">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-[#2563EB] uppercase">
-                <Compass className="h-4 w-4 text-[#2563EB]" />
-                Counselling Streams Covered
-              </span>
-              <h3 className="font-display mt-2 text-2xl font-bold text-[#0F2239]">
-                End-to-End Tamil Nadu Single-Window Guidance
-              </h3>
-              <p className="mt-1.5 text-sm text-slate-600">
-                Accurate cutoff analysis, priority choice lists, and round-wise vacancy counselling overseen directly by Dr. B. Ramesh.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-2.5 lg:max-w-lg lg:justify-end">
-              {counsellingStreams.map((stream) => (
-                <span
-                  key={stream}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-bold text-[#0F2239]"
-                >
-                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-                  {stream}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

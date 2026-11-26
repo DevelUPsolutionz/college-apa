@@ -9,6 +9,7 @@ import { CampusGallerySection } from './components/CampusGallerySection';
 import { CollegeCoursesPageView } from './components/CollegeCoursesPageView';
 import { CollegesPageView } from './components/CollegesPageView';
 import { ContactFooter } from './components/ContactFooter';
+import { CounsellingGuidanceBanner } from './components/CounsellingGuidanceBanner';
 import { HeroSection } from './components/HeroSection';
 import { Navbar } from './components/Navbar';
 import { ScholarshipsSection } from './components/ScholarshipsSection';
@@ -118,12 +119,15 @@ export function App() {
             {/* 4th Section: Featured Campus & Counselling Event Gallery */}
             <CampusGallerySection />
 
-            {/* 5th Section: Government & Merit Scholarships */}
+            {/* 5th Section: End-to-End Single-Window Guidance Banner (Edura Style with Floating Blue Bar) */}
+            <CounsellingGuidanceBanner onEnquire={() => scrollToSection('enquiry')} />
+
+            {/* 6th Section: Government & Merit Scholarships */}
             <ScholarshipsSection
               onEnquire={() => scrollToSection('enquiry')}
             />
 
-            {/* 6th Section: Admission Enquiry Form */}
+            {/* 7th Section: Admission Enquiry Form */}
             <AdmissionEnquirySection
               colleges={collegesData}
               prefill={enquiryPrefill}
