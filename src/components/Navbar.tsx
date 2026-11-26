@@ -12,7 +12,6 @@ const navLinks = [
   { label: 'Tamil Nadu Zones', target: 'zones' },
   { label: 'Gallery', target: 'gallery' },
   { label: 'Scholarships', target: 'scholarships' },
-  { label: 'Application Form', target: 'application' },
   { label: 'Contact', target: 'contact' },
 ];
 
