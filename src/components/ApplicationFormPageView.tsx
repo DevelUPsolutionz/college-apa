@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import {
   ArrowLeft,
+  ArrowRight,
   Building2,
   CheckCircle2,
   FileCheck2,
@@ -204,8 +205,11 @@ _Kindly review this application and guide me on admission procedure, transparent
       agencyConfig.whatsappNumber
     }&text=${encodeURIComponent(message)}`;
 
-    // Open WhatsApp in a new tab
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    // Open WhatsApp in a new tab, fallback to direct redirection if popup blocked
+    const opened = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (!opened) {
+      window.location.href = whatsappUrl;
+    }
   };
 
   return (
@@ -947,31 +951,24 @@ _Kindly review this application and guide me on admission procedure, transparent
             </div>
           </div>
 
-          {/* SECTION 8: PAYMENT PROCESS & SUBMIT NOTICE */}
-          <div className="rounded-3xl bg-[#0F2239] p-6 sm:p-8 text-white shadow-xl">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="max-w-xl">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-blue-200 uppercase">
-                  Payment Process &amp; Verification
-                </span>
-                <h4 className="font-display mt-2 text-xl font-black text-white">
-                  Zero Application Fee • 100% Free Advisory
-                </h4>
-                <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Submitting this form does not charge any consultation fee. Your full application data will be compiled and sent directly to <strong>Dr. B. Ramesh</strong> via WhatsApp for immediate seat allotment and scholarship counselling.
-                </p>
-              </div>
-
-              <div className="shrink-0">
-                <button
-                  type="submit"
-                  className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl bg-[#25D366] px-8 py-4 text-base font-black text-white shadow-xl shadow-emerald-950/40 transition-all hover:bg-[#20ba5a] hover:scale-105 active:scale-95"
-                >
-                  <MessageCircle className="h-5 w-5" />
-                  <span>Submit Application via WhatsApp &rarr;</span>
-                </button>
-              </div>
+          {/* SUBMIT BUTTON SECTION */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs">
+            <div>
+              <h4 className="font-display text-base font-bold text-[#0F2239]">
+                Submit Admission Application
+              </h4>
+              <p className="mt-1 text-xs text-slate-500">
+                Please verify all fields. Clicking Submit will automatically send your full application to our WhatsApp admission desk.
+              </p>
             </div>
+
+            <button
+              type="submit"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl bg-[#1D4ED8] px-10 py-4 text-base font-bold text-white shadow-lg shadow-blue-700/25 transition-all hover:bg-[#1e40af] hover:shadow-xl active:scale-[0.98]"
+            >
+              <span>Submit</span>
+              <ArrowRight className="h-5 w-5" />
+            </button>
           </div>
         </form>
       </div>
