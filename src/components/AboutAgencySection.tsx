@@ -81,7 +81,7 @@ export function AboutAgencySection({
                 </div>
                 <div>
                   <p className="font-display text-xl font-extrabold text-[#0F2239]">
-                    15+ Years
+                    5+ Years
                   </p>
                   <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
                     Admission Advisory

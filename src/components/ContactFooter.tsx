@@ -67,7 +67,7 @@ export function ContactFooter({ onNavigate }: ContactFooterProps) {
         {/* ========================================================
             ROW 1: Edura 3-Column Top Contact Strip with Glowing Blue Circles
             ======================================================== */}
-        <div className="grid gap-6 border-b border-white/10 py-10 md:grid-cols-3">
+        <div className="grid gap-6 py-8 md:grid-cols-3">
           {/* 1. Phone */}
           <div className="flex items-center gap-4">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#1E3A8A]/60 border border-[#2563EB]/40 text-[#60A5FA] shadow-lg shadow-blue-900/30">
@@ -115,202 +115,234 @@ export function ContactFooter({ onNavigate }: ContactFooterProps) {
         </div>
 
         {/* ========================================================
-            ROW 2: Edura 4-Column Main Footer Body
+            ROW 2: Edura 4-Column Main Footer Body inside Shining Grain Box
             ======================================================== */}
-        <div className="grid gap-10 py-14 md:grid-cols-12 lg:gap-12">
-          {/* Col 1: Logo, Mission Description & Social Media Icons */}
-          <div className="md:col-span-4">
-            <div className="flex items-center gap-3">
-              <div className="rounded-xl bg-white p-2 shadow-sm">
-                <img
-                  src="/college-apa-logo.png"
-                  alt={agencyConfig.brandName}
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
-              <div>
-                <span className="font-display block text-xl font-black text-white">
-                  College <span className="text-[#38BDF8]">APA</span>
-                </span>
-                <span className="block text-xs font-semibold text-slate-400">
-                  Admission &amp; Guidance Centre
-                </span>
-              </div>
-            </div>
+        <div className="relative my-6 overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent p-8 sm:p-10 lg:p-12 shadow-2xl shadow-blue-950/40 backdrop-blur-xs">
+          {/* Light shining radial spotlight */}
+          <div
+            className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-4/5 rounded-full bg-gradient-to-b from-[#38BDF8]/25 via-[#2563EB]/15 to-transparent blur-3xl"
+            aria-hidden="true"
+          />
 
-            <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              Personalized guidance tailored to each student&apos;s individual qualifications,
-              merit cutoff, and career aspirations across all accredited Tamil Nadu institutions.
-            </p>
+          {/* Top edge light-beam specular reflection */}
+          <div
+            className="pointer-events-none absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#60A5FA] to-transparent opacity-80"
+            aria-hidden="true"
+          />
 
-            {/* Social Links Row */}
-            <div className="mt-6">
-              <p className="text-xs font-black tracking-wider text-white uppercase">
-                FOLLOW US ON:
+          {/* Shimmering grain texture overlay */}
+          <svg
+            className="pointer-events-none absolute inset-0 h-full w-full opacity-25 mix-blend-overlay"
+            aria-hidden="true"
+          >
+            <filter id="footerGrainTexture">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.75"
+                numOctaves="3"
+                stitchTiles="stitch"
+              />
+              <feColorMatrix type="saturate" values="0" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#footerGrainTexture)" />
+          </svg>
+
+          {/* Inner 4-Column Grid */}
+          <div className="relative z-10 grid gap-10 md:grid-cols-12 lg:gap-12">
+            {/* Col 1: Logo, Mission Description & Social Media Icons */}
+            <div className="md:col-span-4">
+              <div className="flex items-center gap-3">
+                <div className="rounded-xl bg-white p-2 shadow-sm">
+                  <img
+                    src="/college-apa-logo.png"
+                    alt={agencyConfig.brandName}
+                    className="h-10 w-auto object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="font-display block text-xl font-black text-white">
+                    College <span className="text-[#38BDF8]">APA</span>
+                  </span>
+                  <span className="block text-xs font-semibold text-slate-400">
+                    Admission &amp; Guidance Centre
+                  </span>
+                </div>
+              </div>
+
+              <p className="mt-4 text-sm leading-relaxed text-slate-300">
+                Personalized guidance tailored to each student&apos;s individual qualifications,
+                merit cutoff, and career aspirations across all accredited Tamil Nadu institutions.
               </p>
-              <div className="mt-3 flex items-center gap-2.5 text-slate-300">
-                <a
-                  href={`https://wa.me/${agencyConfig.whatsappNumber}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-emerald-600 hover:text-white transition-all shadow-xs"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                </a>
-                <a
-                  href={agencyConfig.socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-[#2563EB] hover:text-white transition-all text-xs font-bold"
-                >
-                  IG
-                </a>
-                <a
-                  href={agencyConfig.socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-[#2563EB] hover:text-white transition-all text-xs font-bold"
-                >
-                  IN
-                </a>
-                <a
-                  href={agencyConfig.socialLinks.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-[#2563EB] hover:text-white transition-all text-xs font-bold"
-                >
-                  YT
-                </a>
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-slate-400">
-                  <Globe className="h-4 w-4" />
-                </span>
+
+              {/* Social Links Row */}
+              <div className="mt-6">
+                <p className="text-xs font-black tracking-wider text-white uppercase">
+                  FOLLOW US ON:
+                </p>
+                <div className="mt-3 flex items-center gap-2.5 text-slate-300">
+                  <a
+                    href={`https://wa.me/${agencyConfig.whatsappNumber}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-emerald-600 hover:text-white transition-all shadow-xs"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                  </a>
+                  <a
+                    href={agencyConfig.socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-[#2563EB] hover:text-white transition-all text-xs font-bold"
+                  >
+                    IG
+                  </a>
+                  <a
+                    href={agencyConfig.socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-[#2563EB] hover:text-white transition-all text-xs font-bold"
+                  >
+                    IN
+                  </a>
+                  <a
+                    href={agencyConfig.socialLinks.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-[#2563EB] hover:text-white transition-all text-xs font-bold"
+                  >
+                    YT
+                  </a>
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-slate-400">
+                    <Globe className="h-4 w-4" />
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Col 2: Quick Links (Edura Bulleted List) */}
-          <div className="md:col-span-2 sm:col-span-6">
-            <h4 className="font-display text-base font-bold text-white relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#2563EB]">
-              Quick Links
-            </h4>
-            <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('home')}
-                  className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
-                >
-                  <span className="text-slate-500">•</span> Home
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('zones')}
-                  className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
-                >
-                  <span className="text-slate-500">•</span> Explore Zones
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('zones')}
-                  className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
-                >
-                  <span className="text-slate-500">•</span> Engineering
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('zones')}
-                  className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
-                >
-                  <span className="text-slate-500">•</span> Paramedical
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('zones')}
-                  className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
-                >
-                  <span className="text-slate-500">•</span> Law &amp; Agri
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('about')}
-                  className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
-                >
-                  <span className="text-slate-500">•</span> Scholarships
-                </button>
-              </li>
-            </ul>
-          </div>
+            {/* Col 2: Quick Links (Edura Bulleted List) */}
+            <div className="md:col-span-2 sm:col-span-6">
+              <h4 className="font-display text-base font-bold text-white relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#2563EB]">
+                Quick Links
+              </h4>
+              <ul className="mt-4 space-y-2.5 text-sm text-slate-300">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('home')}
+                    className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
+                  >
+                    <span className="text-[#38BDF8]">•</span> Home
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('about')}
+                    className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
+                  >
+                    <span className="text-[#38BDF8]">•</span> About Us
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('zones')}
+                    className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
+                  >
+                    <span className="text-[#38BDF8]">•</span> Explore Zones
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('gallery')}
+                    className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
+                  >
+                    <span className="text-[#38BDF8]">•</span> Gallery
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('scholarships')}
+                    className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
+                  >
+                    <span className="text-[#38BDF8]">•</span> Scholarships
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('enquiry')}
+                    className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
+                  >
+                    <span className="text-[#38BDF8]">•</span> Admission Form
+                  </button>
+                </li>
+              </ul>
+            </div>
 
-          {/* Col 3: Counselling Resources (Edura Bulleted List) */}
-          <div className="md:col-span-2 sm:col-span-6">
-            <h4 className="font-display text-base font-bold text-white relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#2563EB]">
-              Counselling
-            </h4>
-            <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
-              <li className="flex items-center gap-2">
-                <span className="text-slate-500">•</span> TNEA Engineering
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-slate-500">•</span> TNAU Agriculture
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-slate-500">•</span> TN Medical Selection
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-slate-500">•</span> Nursing &amp; B.Pharm
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-slate-500">•</span> 7.5% Govt Quota
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-slate-500">•</span> First Graduate Aid
-              </li>
-            </ul>
-          </div>
+            {/* Col 3: Counselling Resources (Edura Bulleted List) */}
+            <div className="md:col-span-2 sm:col-span-6">
+              <h4 className="font-display text-base font-bold text-white relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#2563EB]">
+                Counselling
+              </h4>
+              <ul className="mt-4 space-y-2.5 text-sm text-slate-300">
+                <li className="flex items-center gap-2">
+                  <span className="text-[#38BDF8]">•</span> TNEA Engineering
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#38BDF8]">•</span> TNAU Agriculture
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#38BDF8]">•</span> TN Medical Selection
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#38BDF8]">•</span> Nursing &amp; B.Pharm
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#38BDF8]">•</span> 7.5% Govt Quota
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#38BDF8]">•</span> First Graduate Aid
+                </li>
+              </ul>
+            </div>
 
-          {/* Col 4: Get in touch! + Newsletter Input Box (Exact Edura Form) */}
-          <div className="md:col-span-4">
-            <h4 className="font-display text-base font-bold text-white relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#2563EB]">
-              Get in touch!
-            </h4>
-            <p className="mt-4 text-sm text-slate-400">
-              Subscribe our newsletter to get our latest cutoff updates &amp; counselling notices.
-            </p>
+            {/* Col 4: Get in touch! + Newsletter Input Box (Exact Edura Form) */}
+            <div className="md:col-span-4">
+              <h4 className="font-display text-base font-bold text-white relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#2563EB]">
+                Get in touch!
+              </h4>
+              <p className="mt-4 text-sm text-slate-300">
+                Subscribe our newsletter to get our latest cutoff updates &amp; counselling notices.
+              </p>
 
-            <form onSubmit={handleSubscribe} className="mt-5 space-y-3">
-              <div className="relative">
-                <input
-                  type="email"
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="Enter Your Email"
-                  required
-                  className="w-full rounded-xl bg-white/10 border border-white/20 py-3 pr-10 pl-4 text-sm text-white placeholder:text-slate-400 focus:border-[#2563EB] focus:bg-white/15 focus:outline-none"
-                />
-                <Mail className="pointer-events-none absolute top-1/2 right-3.5 h-4 w-4 -translate-y-1/2 text-slate-400" />
-              </div>
+              <form onSubmit={handleSubscribe} className="mt-5 space-y-3">
+                <div className="relative">
+                  <input
+                    type="email"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    placeholder="Enter Your Email"
+                    required
+                    className="w-full rounded-xl bg-white/10 border border-white/20 py-3 pr-10 pl-4 text-sm text-white placeholder:text-slate-400 focus:border-[#2563EB] focus:bg-white/15 focus:outline-none"
+                  />
+                  <Mail className="pointer-events-none absolute top-1/2 right-3.5 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                </div>
 
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-[#2563EB] py-3 text-sm font-black text-white uppercase tracking-wider transition-all hover:bg-[#1D4ED8] shadow-md shadow-blue-900/40"
-              >
-                {subscribed ? 'SUBSCRIBED!' : 'SUBSCRIBE'}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full rounded-xl bg-[#2563EB] py-3 text-sm font-black text-white uppercase tracking-wider transition-all hover:bg-[#1D4ED8] shadow-md shadow-blue-900/40"
+                >
+                  {subscribed ? 'SUBSCRIBED!' : 'SUBSCRIBE'}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
