@@ -157,18 +157,36 @@ export function App() {
 
       <ContactFooter onNavigate={scrollToSection} />
 
-      {/* Floating Sticky Mobile WhatsApp Button */}
+      {/* Floating Always-Visible WhatsApp Button (Bottom Right) */}
       <a
         href={`https://wa.me/${agencyConfig.whatsappNumber}?text=${encodeURIComponent(
-          `Hello College APA (Dr. B. Ramesh), I would like admission guidance for Tamil Nadu colleges.`
+          `Hello Dr. B. Ramesh (College APA), I would like direct admission and counselling guidance for Tamil Nadu colleges.`
         )}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed right-4 bottom-4 z-30 inline-flex items-center gap-2 rounded-full bg-[#059669] px-4 py-3 text-xs font-bold text-white shadow-lg shadow-emerald-950/30 transition-transform hover:scale-105 md:hidden"
-        aria-label="WhatsApp Admission Enquiry"
+        className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-50 group flex items-center gap-3 rounded-full bg-[#25D366] px-4 py-3 sm:px-5 sm:py-3.5 text-white shadow-2xl shadow-emerald-950/40 transition-all hover:bg-[#20ba5a] hover:scale-105 active:scale-95"
+        aria-label="Direct WhatsApp with Dr. B. Ramesh (+91 99528 87324)"
       >
-        <MessageCircle className="h-4 w-4" />
-        WhatsApp Dr. B. Ramesh
+        {/* Pulsing subtle ring */}
+        <span
+          className="pointer-events-none absolute -inset-1 rounded-full bg-[#25D366] opacity-40 animate-ping duration-1000"
+          aria-hidden="true"
+        />
+
+        {/* WhatsApp Icon */}
+        <div className="relative flex h-6 w-6 items-center justify-center">
+          <MessageCircle className="h-6 w-6 fill-current text-white" />
+        </div>
+
+        {/* Button Text */}
+        <div className="relative flex flex-col text-left">
+          <span className="text-[10px] font-black uppercase tracking-wider text-emerald-950/80 leading-none">
+            Direct WhatsApp
+          </span>
+          <span className="font-display text-xs sm:text-sm font-extrabold text-white leading-tight">
+            +91 99528 87324
+          </span>
+        </div>
       </a>
     </div>
   );
