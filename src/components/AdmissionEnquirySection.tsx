@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
 import {
   CheckCircle2,
+  GraduationCap,
   MessageCircle,
-  PhoneCall,
   Send,
   ShieldCheck,
+  Sparkles,
+  Zap,
 } from 'lucide-react';
 import { agencyConfig } from '../data/agencyConfig';
 import type { College } from '../types/admissions';
@@ -122,60 +124,116 @@ export function AdmissionEnquirySection({
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Left Context Column */}
-          <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1 text-xs font-bold tracking-wider text-[#0F2239] uppercase">
-              <PhoneCall className="h-3.5 w-3.5 text-amber-500" />
-              <span>Direct Counselling Desk</span>
+          {/* Left Context Column: Funky & Eye-Catching Golden-Yellow Card (Matching Logo APA Yellow) */}
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#FBBF24] via-[#F59E0B] to-[#D97706] p-7 sm:p-9 lg:p-10 text-[#071322] shadow-2xl shadow-amber-500/25 border-3 border-amber-300/80 flex flex-col justify-between lg:col-span-5">
+            {/* Playful background doodles & organic shapes */}
+            <div
+              className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-white/20 blur-xl"
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-amber-600/30 blur-2xl"
+              aria-hidden="true"
+            />
+
+            {/* Playful floating sparkles */}
+            <div
+              className="pointer-events-none absolute top-6 right-6 opacity-40 select-none text-2xl"
+              aria-hidden="true"
+            >
+              ✨
             </div>
-            <h2 className="font-display mt-3 text-3xl font-extrabold tracking-tight text-[#0F2239] sm:text-4xl">
-              Request Admission &amp; Counselling Guidance
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Connect directly with <strong className="text-[#0F2239]">Dr. B. Ramesh</strong> for
-              TNEA engineering cutoff calculation, medical/allied health selection,
-              scholarship eligibility (First Graduate, 7.5%, PMSS), and management quota admission.
-            </p>
+            <div
+              className="pointer-events-none absolute bottom-36 right-4 opacity-30 select-none text-xl"
+              aria-hidden="true"
+            >
+              🎓
+            </div>
 
-            {/* Selected Course summary pill */}
-            {selectedCollege && selectedCourse && (
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-xs font-bold tracking-wider text-slate-500 uppercase">
-                  Shortlisted for Enquiry
-                </p>
-                <p className="font-display mt-1 text-sm font-bold text-[#0F2239]">
-                  {selectedCourse.name}
-                </p>
-                <p className="text-xs font-medium text-slate-500">
-                  {selectedCollege.name} • {selectedCollege.district}
-                </p>
+            <div className="relative z-10">
+              {/* Tilted Sticker Pill Badge */}
+              <div className="inline-flex -rotate-2 transform items-center gap-2 rounded-full bg-[#071322] px-4 py-1.5 text-xs font-black tracking-wider text-[#FBBF24] shadow-md transition-transform hover:rotate-0">
+                <Sparkles className="h-3.5 w-3.5 text-[#FBBF24]" />
+                <span>DIRECT COUNSELLING DESK</span>
               </div>
-            )}
 
-            {/* Direct WhatsApp Card */}
-            <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
-              <h3 className="font-display text-base font-bold text-[#0F2239]">
-                Instant WhatsApp Admission Desk
-              </h3>
-              <p className="mt-1 text-sm text-slate-600">
-                Send your chosen college, cutoff marks, or questions directly to Dr. B. Ramesh on WhatsApp.
+              {/* Headline */}
+              <h2 className="font-display mt-5 text-3xl sm:text-4xl font-black tracking-tight text-[#071322] leading-tight">
+                Request Admission &amp; Counselling Guidance
+              </h2>
+
+              {/* Subtitle / Paragraph */}
+              <p className="mt-4 text-base font-medium leading-relaxed text-[#071322]/90">
+                Connect directly with <strong className="font-black text-[#071322] underline decoration-amber-800/40 decoration-2">Dr. B. Ramesh</strong> for TNEA engineering cutoff calculation, medical/allied health selection, scholarship eligibility (First Graduate, 7.5%, PMSS), and management quota seats.
               </p>
+
+              {/* 3 Funky Feature Badges / Chips */}
+              <div className="mt-6 flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/40 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-white/50 shadow-xs">
+                  <Zap className="h-3.5 w-3.5 text-[#071322]" />
+                  Instant Cutoff Calculation
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/40 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-white/50 shadow-xs">
+                  <GraduationCap className="h-3.5 w-3.5 text-[#071322]" />
+                  180+ Colleges &amp; Deemed
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/40 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-white/50 shadow-xs">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#071322]" />
+                  Zero Consultation Fee
+                </span>
+              </div>
+
+              {/* Selected Course summary pill (if prefilled) */}
+              {selectedCollege && selectedCourse && (
+                <div className="mt-5 rounded-2xl border-2 border-dashed border-[#071322]/30 bg-white/80 p-4 backdrop-blur-xs">
+                  <p className="text-[11px] font-black tracking-wider text-[#071322]/70 uppercase">
+                    ⭐ Shortlisted for Direct Enquiry
+                  </p>
+                  <p className="font-display mt-0.5 text-sm font-bold text-[#071322]">
+                    {selectedCourse.name}
+                  </p>
+                  <p className="text-xs font-medium text-[#071322]/80">
+                    {selectedCollege.name} • {selectedCollege.district}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Direct WhatsApp Card with playful chat bubble styling */}
+            <div className="relative z-10 mt-8 rounded-3xl bg-white p-5 sm:p-6 shadow-xl border-2 border-white/90">
+              {/* Cute chat tail indicator */}
+              <div className="absolute -top-2.5 left-8 h-4 w-4 rotate-45 bg-white border-t-2 border-l-2 border-white/90" />
+
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-bold text-emerald-800">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                  Online Now
+                </span>
+                <span className="text-xs font-bold text-slate-500">Dr. B. Ramesh</span>
+              </div>
+
+              <h3 className="font-display mt-2 text-base sm:text-lg font-black text-[#0F2239]">
+                Instant WhatsApp Desk
+              </h3>
+              <p className="mt-1 text-xs sm:text-sm text-slate-600 leading-snug">
+                Send your 12th cutoff mark, branch questions, or scholarship doubts directly.
+              </p>
+
               <a
                 href={buildWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F2239] px-5 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#1A365D]"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#071322] px-5 py-3 text-sm font-black text-[#FBBF24] shadow-md transition-all hover:bg-[#1A365D] hover:scale-[1.02]"
               >
                 <MessageCircle className="h-4 w-4 text-emerald-400" />
-                Chat on WhatsApp ({agencyConfig.whatsappDisplay})
+                <span>Chat on WhatsApp ({agencyConfig.whatsappDisplay})</span>
               </a>
             </div>
 
-            <div className="mt-5 flex items-center gap-2 text-xs text-slate-500">
-              <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-600" />
-              <span>
-                100% Confidential &amp; Verified Advisory Across Tamil Nadu.
-              </span>
+            {/* Bottom Guarantee */}
+            <div className="relative z-10 mt-5 flex items-center justify-center gap-2 text-xs font-bold text-[#071322]/80">
+              <ShieldCheck className="h-4 w-4 shrink-0 text-[#071322]" />
+              <span>100% Confidential &amp; Verified Advisory</span>
             </div>
           </div>
 
