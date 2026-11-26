@@ -1,26 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
-  --color-navy-950: #061326;
-  --color-navy-900: #0B1F3A;
-  --color-navy-800: #132F54;
-  --color-navy-700: #1E4273;
-  --color-teal-600: #0D9488;
-  --color-teal-500: #14B8A6;
-  --color-teal-50: #F0FDFA;
-  --color-surface: #FAF9F6;
+  --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Outfit', system-ui, sans-serif;
+  
+  /* Edura Crisp Palette: Clean Slate, Navy & Subtle Warm Accent */
+  --color-brand-navy: #0F2239;
+  --color-brand-navy-dark: #0A1828;
+  --color-brand-navy-light: #1A365D;
+  
+  /* Minimal warm golden accent (used strictly for badges/key stars/small focus) */
+  --color-brand-accent: #D97706;
+  --color-brand-accent-hover: #B45309;
+  --color-brand-accent-light: #FEF3C7;
+  
+  /* Edura Clean Neutral Surface */
+  --color-surface-bg: #F8FAFC;
+  --color-surface-card: #FFFFFF;
+  --color-surface-border: #E2E8F0;
+  --color-surface-border-subtle: #F1F5F9;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
+    background-color: #F8FAFC;
+    color: #1E293B;
   }
 
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
+    letter-spacing: -0.025em;
   }
 }
 

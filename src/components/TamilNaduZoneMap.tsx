@@ -38,22 +38,23 @@ export function ZoneExplorerSection({
   return (
     <section
       id="zones"
-      className="border-b border-slate-200/80 bg-white py-16 sm:py-20 lg:py-24"
+      className="border-b border-amber-900/10 bg-[#FAF8F5] py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-[#0D9488] uppercase">
+            <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#C9881A] uppercase">
               <Compass className="h-4 w-4" />
-              <span>Step 1 — Geographical Discovery</span>
+              <span>Step 1 — Regional Exploration</span>
             </div>
-            <h2 className="font-display mt-2 text-3xl font-bold tracking-tight text-[#0B1F3A] sm:text-4xl">
+            <h2 className="font-display mt-2 text-3xl font-extrabold tracking-tight text-[#082142] sm:text-4xl">
               Explore Colleges by Tamil Nadu Zone
             </h2>
             <p className="mt-3 text-base text-slate-600">
-              Select a region on the interactive map or choose a zone card below
-              to filter colleges, inspect departments, and compare fee structures.
+              Select a zone on the interactive map or choose a card below to discover
+              participating Engineering, Deemed Universities, Paramedical, Law, and
+              Agriculture institutions.
             </p>
           </div>
 
@@ -61,9 +62,9 @@ export function ZoneExplorerSection({
             <button
               type="button"
               onClick={() => onSelectZone(null)}
-              className="inline-flex items-center gap-2 self-start rounded-xl border border-slate-300 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-[#0B1F3A] transition-colors hover:bg-slate-100 md:self-auto"
+              className="inline-flex items-center gap-2 self-start rounded-xl border border-amber-300 bg-white px-4 py-2.5 text-sm font-bold text-[#082142] shadow-xs transition-colors hover:bg-amber-50 md:self-auto"
             >
-              <Layers className="h-4 w-4 text-[#0D9488]" />
+              <Layers className="h-4 w-4 text-[#C9881A]" />
               Show All Zones ({colleges.length} Colleges)
             </button>
           )}
@@ -72,13 +73,13 @@ export function ZoneExplorerSection({
         {/* Interactive Map + Zone Selector Grid */}
         <div className="mt-10 grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
           {/* Interactive Tamil Nadu SVG Map */}
-          <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5 sm:p-6 lg:col-span-5">
+          <div className="rounded-2xl border border-amber-200/80 bg-white p-5 sm:p-6 shadow-sm lg:col-span-5">
             <div className="mb-3 flex items-center justify-between">
-              <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
-                Click a Zone Region
+              <span className="text-xs font-bold tracking-wider text-slate-500 uppercase">
+                Click a Region
               </span>
-              <span className="text-xs font-medium text-[#0D9488]">
-                {activeZone ? `${activeZone.name} Selected` : 'All Tamil Nadu'}
+              <span className="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-bold text-[#C9881A]">
+                {activeZone ? `${activeZone.name} Selected` : 'All 6 Zones'}
               </span>
             </div>
 
@@ -114,15 +115,15 @@ export function ZoneExplorerSection({
                         d={pathD}
                         initial={false}
                         animate={{
-                          fill: isSelected ? zone.color : '#FFFFFF',
-                          fillOpacity: isSelected ? 0.92 : 0.95,
-                          stroke: isSelected ? '#0B1F3A' : '#94A3B8',
+                          fill: isSelected ? '#082142' : '#FFFFFF',
+                          fillOpacity: isSelected ? 0.95 : 0.95,
+                          stroke: isSelected ? '#DF9D2B' : '#CBD5E1',
                           strokeWidth: isSelected ? 2.5 : 1.4,
                           scale: isSelected ? 1.02 : 1,
                         }}
                         whileHover={{
-                          fill: isSelected ? zone.color : '#E0F2FE',
-                          stroke: '#0B1F3A',
+                          fill: isSelected ? '#082142' : '#FEF3C7',
+                          stroke: '#C9881A',
                           strokeWidth: 2,
                         }}
                         transition={{ duration: 0.2 }}
@@ -133,20 +134,20 @@ export function ZoneExplorerSection({
                         cx={zone.pinPos.x}
                         cy={zone.pinPos.y}
                         r={isSelected ? 6 : 4.5}
-                        fill={isSelected ? '#FFFFFF' : zone.color}
-                        stroke={isSelected ? '#0B1F3A' : '#FFFFFF'}
+                        fill={isSelected ? '#DF9D2B' : '#082142'}
+                        stroke={isSelected ? '#082142' : '#FFFFFF'}
                         strokeWidth="1.8"
                         className="pointer-events-none"
                       />
                       {/* Zone label pill */}
                       <rect
-                        x={zone.labelPos.x - 42}
+                        x={zone.labelPos.x - 44}
                         y={zone.labelPos.y - 12}
-                        width="84"
+                        width="88"
                         height="22"
                         rx="6"
-                        fill={isSelected ? '#0B1F3A' : '#FFFFFF'}
-                        stroke={isSelected ? '#0B1F3A' : '#CBD5E1'}
+                        fill={isSelected ? '#DF9D2B' : '#082142'}
+                        stroke={isSelected ? '#082142' : '#DF9D2B'}
                         strokeWidth="1"
                         className="pointer-events-none"
                       />
@@ -154,8 +155,8 @@ export function ZoneExplorerSection({
                         x={zone.labelPos.x}
                         y={zone.labelPos.y + 3}
                         textAnchor="middle"
-                        className={`pointer-events-none text-[10px] font-semibold ${
-                          isSelected ? 'fill-white' : 'fill-[#0B1F3A]'
+                        className={`pointer-events-none text-[10px] font-bold ${
+                          isSelected ? 'fill-[#082142]' : 'fill-white'
                         }`}
                       >
                         {zone.shortName} ({count})
@@ -167,7 +168,7 @@ export function ZoneExplorerSection({
             </div>
 
             <p className="mt-3 text-center text-xs text-slate-500">
-              Zones follow our consultancy&apos;s regional admission classification.
+              Zones configured per College APA regional classification.
             </p>
           </div>
 
@@ -186,18 +187,19 @@ export function ZoneExplorerSection({
                   whileTap={{ scale: 0.99 }}
                   className={`group flex flex-col justify-between rounded-2xl border p-5 text-left transition-all ${
                     isSelected
-                      ? 'border-[#0B1F3A] bg-[#0B1F3A] text-white shadow-lg shadow-[#0B1F3A]/15'
-                      : 'border-slate-200 bg-white text-[#0F172A] shadow-xs hover:border-[#0D9488]/50 hover:shadow-md'
+                      ? 'border-[#DF9D2B] bg-[#082142] text-white shadow-xl shadow-[#082142]/20'
+                      : 'border-amber-200/70 bg-white text-[#0A1A30] shadow-xs hover:border-[#C9881A] hover:shadow-md'
                   }`}
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-center gap-2.5">
                         <span
-                          className="flex h-3 w-3 rounded-full ring-4 ring-opacity-20"
-                          style={{
-                            backgroundColor: isSelected ? '#14B8A6' : zone.color,
-                          }}
+                          className={`flex h-3 w-3 rounded-full ring-4 ring-opacity-25 ${
+                            isSelected
+                              ? 'bg-[#DF9D2B] ring-[#DF9D2B]'
+                              : 'bg-[#C9881A] ring-[#C9881A]'
+                          }`}
                         />
                         <h3 className="font-display text-lg font-bold">
                           {zone.name}
@@ -205,10 +207,10 @@ export function ZoneExplorerSection({
                       </div>
 
                       <span
-                        className={`rounded-full px-2.5 py-0.5 text-xs font-semibold tabular-nums ${
+                        className={`rounded-full px-2.5 py-0.5 text-xs font-bold tabular-nums ${
                           isSelected
-                            ? 'bg-white/15 text-[#5EEAD4]'
-                            : 'bg-slate-100 text-[#0B1F3A]'
+                            ? 'bg-[#DF9D2B] text-[#082142]'
+                            : 'bg-amber-100 text-[#92400e]'
                         }`}
                       >
                         {count} {count === 1 ? 'College' : 'Colleges'}
@@ -216,8 +218,8 @@ export function ZoneExplorerSection({
                     </div>
 
                     <p
-                      className={`mt-1 text-xs font-semibold ${
-                        isSelected ? 'text-[#5EEAD4]' : 'text-[#0D9488]'
+                      className={`mt-1 text-xs font-bold ${
+                        isSelected ? 'text-[#FCD34D]' : 'text-[#C9881A]'
                       }`}
                     >
                       {zone.tagline}
@@ -245,7 +247,7 @@ export function ZoneExplorerSection({
                       </div>
                       <ArrowDownRight
                         className={`h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 ${
-                          isSelected ? 'text-[#14B8A6]' : 'text-slate-400'
+                          isSelected ? 'text-[#DF9D2B]' : 'text-slate-400'
                         }`}
                       />
                     </div>
@@ -259,4 +261,3 @@ export function ZoneExplorerSection({
     </section>
   );
 }
-

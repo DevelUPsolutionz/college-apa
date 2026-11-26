@@ -41,7 +41,6 @@ export function AdmissionEnquirySection({
   const [submitted, setSubmitted] = useState(false);
   const [lastPrefill, setLastPrefill] = useState<EnquiryPrefill | null>(null);
 
-  // Auto-populate when user clicks "Enquire About This Course"
   if (prefill && prefill !== lastPrefill) {
     setLastPrefill(prefill);
     setPreferredCollegeId(prefill.collegeId);
@@ -101,7 +100,7 @@ export function AdmissionEnquirySection({
 
   const buildWhatsAppUrl = () => {
     const lines = [
-      `Hello ${agencyConfig.brandName}, I would like to enquire about college admissions.`,
+      `Hello College APA (Dr. B. Ramesh), I would like admission counselling guidance.`,
       studentName ? `Student Name: ${studentName}` : '',
       parentName ? `Parent/Guardian: ${parentName}` : '',
       mobile ? `Mobile: ${mobile}` : '',
@@ -119,82 +118,81 @@ export function AdmissionEnquirySection({
   return (
     <section
       id="enquiry"
-      className="border-b border-slate-200/80 bg-white py-16 sm:py-20 lg:py-24"
+      className="border-b border-slate-200 bg-white py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Left Context Column */}
           <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-[#0D9488] uppercase">
-              <PhoneCall className="h-4 w-4" />
-              <span>Step 3 — Admission Guidance</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1 text-xs font-bold tracking-wider text-[#0F2239] uppercase">
+              <PhoneCall className="h-3.5 w-3.5 text-amber-500" />
+              <span>Direct Counselling Desk</span>
             </div>
-            <h2 className="font-display mt-2 text-3xl font-bold tracking-tight text-[#0B1F3A] sm:text-4xl">
-              Request Personalized Admission Enquiry
+            <h2 className="font-display mt-3 text-3xl font-extrabold tracking-tight text-[#0F2239] sm:text-4xl">
+              Request Admission &amp; Counselling Guidance
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Speak with our Tamil Nadu admission advisors for seat availability,
-              counselling cut-off guidance, scholarship eligibility, and
-              semester fee clarity.
+              Connect directly with <strong className="text-[#0F2239]">Dr. B. Ramesh</strong> for
+              TNEA engineering cutoff calculation, medical/allied health selection,
+              scholarship eligibility (First Graduate, 7.5%, PMSS), and management quota admission.
             </p>
 
-            {/* Auto-populated summary pill if coming from a course */}
+            {/* Selected Course summary pill */}
             {selectedCollege && selectedCourse && (
-              <div className="mt-6 rounded-2xl border border-[#0D9488]/30 bg-[#F0FDFA] p-4">
-                <p className="text-xs font-bold tracking-wider text-[#0F766E] uppercase">
-                  Selected Course for Enquiry
+              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <p className="text-xs font-bold tracking-wider text-slate-500 uppercase">
+                  Shortlisted for Enquiry
                 </p>
-                <p className="font-display mt-1 text-sm font-bold text-[#0B1F3A]">
+                <p className="font-display mt-1 text-sm font-bold text-[#0F2239]">
                   {selectedCourse.name}
                 </p>
-                <p className="text-xs text-slate-600">
+                <p className="text-xs font-medium text-slate-500">
                   {selectedCollege.name} • {selectedCollege.district}
                 </p>
               </div>
             )}
 
             {/* Direct WhatsApp Card */}
-            <div className="mt-6 rounded-2xl border border-slate-200 bg-[#FAF9F6] p-5">
-              <h3 className="font-display text-base font-bold text-[#0B1F3A]">
-                Prefer Instant WhatsApp Counselling?
+            <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
+              <h3 className="font-display text-base font-bold text-[#0F2239]">
+                Instant WhatsApp Admission Desk
               </h3>
               <p className="mt-1 text-sm text-slate-600">
-                Send your shortlisted college and course directly to our
-                admission desk on WhatsApp.
+                Send your chosen college, cutoff marks, or questions directly to Dr. B. Ramesh on WhatsApp.
               </p>
               <a
                 href={buildWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#059669] px-5 py-3 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#047857]"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F2239] px-5 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#1A365D]"
               >
-                <MessageCircle className="h-4 w-4" />
-                Enquire via WhatsApp ({agencyConfig.whatsappDisplay})
+                <MessageCircle className="h-4 w-4 text-emerald-400" />
+                Chat on WhatsApp ({agencyConfig.whatsappDisplay})
               </a>
             </div>
 
             <div className="mt-5 flex items-center gap-2 text-xs text-slate-500">
-              <ShieldCheck className="h-4 w-4 shrink-0 text-[#0D9488]" />
+              <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-600" />
               <span>
-                Your details are used strictly for admission counselling.
+                100% Confidential &amp; Verified Advisory Across Tamil Nadu.
               </span>
             </div>
           </div>
 
           {/* Right Form Card */}
           <div className="lg:col-span-7">
-            <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-sm sm:p-8">
+            <div className="rounded-3xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-sm sm:p-8">
               {submitted ? (
                 <div className="py-10 text-center">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F0FDFA] text-[#0D9488]">
-                    <CheckCircle2 className="h-8 w-8" />
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-[#0F2239]">
+                    <CheckCircle2 className="h-8 w-8 text-emerald-600" />
                   </div>
-                  <h3 className="font-display mt-4 text-2xl font-bold text-[#0B1F3A]">
-                    Enquiry Received
+                  <h3 className="font-display mt-4 text-2xl font-bold text-[#0F2239]">
+                    Enquiry Submitted to College APA
                   </h3>
                   <p className="mx-auto mt-2 max-w-md text-sm text-slate-600">
                     Thank you, <span className="font-semibold">{studentName}</span>.
-                    Our Tamil Nadu admission advisor will contact you on{' '}
+                    Dr. B. Ramesh will connect with you on{' '}
                     <span className="font-semibold">{mobile}</span> shortly
                     regarding{' '}
                     <span className="font-semibold">
@@ -207,15 +205,15 @@ export function AdmissionEnquirySection({
                       href={buildWhatsAppUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl bg-[#059669] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#047857]"
+                      className="inline-flex items-center gap-2 rounded-xl bg-[#0F2239] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#1A365D]"
                     >
-                      <MessageCircle className="h-4 w-4" />
-                      Also Chat on WhatsApp
+                      <MessageCircle className="h-4 w-4 text-emerald-400" />
+                      Chat on WhatsApp Now
                     </a>
                     <button
                       type="button"
                       onClick={() => setSubmitted(false)}
-                      className="rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-[#0B1F3A] hover:bg-slate-50"
+                      className="rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-[#0F2239] hover:bg-slate-50"
                     >
                       Submit Another Enquiry
                     </button>
@@ -227,7 +225,7 @@ export function AdmissionEnquirySection({
                     <div>
                       <label
                         htmlFor="student-name"
-                        className="block text-xs font-semibold text-[#0B1F3A]"
+                        className="block text-xs font-bold text-[#0F2239]"
                       >
                         Student Name <span className="text-rose-600">*</span>
                       </label>
@@ -236,8 +234,8 @@ export function AdmissionEnquirySection({
                         type="text"
                         value={studentName}
                         onChange={(e) => setStudentName(e.target.value)}
-                        placeholder="e.g. Karthik Subramanian"
-                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#0D9488] focus:outline-none"
+                        placeholder="e.g. Anandha Kumar"
+                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#0F2239] focus:outline-none"
                       />
                       {errors.studentName && (
                         <p className="mt-1 text-xs text-rose-600">
@@ -249,7 +247,7 @@ export function AdmissionEnquirySection({
                     <div>
                       <label
                         htmlFor="parent-name"
-                        className="block text-xs font-semibold text-[#0B1F3A]"
+                        className="block text-xs font-bold text-[#0F2239]"
                       >
                         Parent / Guardian Name{' '}
                         <span className="font-normal text-slate-400">
@@ -261,8 +259,8 @@ export function AdmissionEnquirySection({
                         type="text"
                         value={parentName}
                         onChange={(e) => setParentName(e.target.value)}
-                        placeholder="e.g. Subramanian R."
-                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#0D9488] focus:outline-none"
+                        placeholder="e.g. Ramesh K."
+                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#0F2239] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -271,7 +269,7 @@ export function AdmissionEnquirySection({
                     <div>
                       <label
                         htmlFor="mobile-number"
-                        className="block text-xs font-semibold text-[#0B1F3A]"
+                        className="block text-xs font-bold text-[#0F2239]"
                       >
                         Mobile Number <span className="text-rose-600">*</span>
                       </label>
@@ -280,8 +278,8 @@ export function AdmissionEnquirySection({
                         type="tel"
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
-                        placeholder="e.g. 9876543210"
-                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#0D9488] focus:outline-none"
+                        placeholder="e.g. 9952887324"
+                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#0F2239] focus:outline-none"
                       />
                       {errors.mobile && (
                         <p className="mt-1 text-xs text-rose-600">
@@ -293,7 +291,7 @@ export function AdmissionEnquirySection({
                     <div>
                       <label
                         htmlFor="preferred-district"
-                        className="block text-xs font-semibold text-[#0B1F3A]"
+                        className="block text-xs font-bold text-[#0F2239]"
                       >
                         Preferred District
                       </label>
@@ -301,7 +299,7 @@ export function AdmissionEnquirySection({
                         id="preferred-district"
                         value={preferredDistrict}
                         onChange={(e) => setPreferredDistrict(e.target.value)}
-                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#0D9488] focus:outline-none"
+                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#0F2239] focus:outline-none"
                       >
                         <option value="">Select District</option>
                         {allDistricts.map((d) => (
@@ -317,7 +315,7 @@ export function AdmissionEnquirySection({
                     <div>
                       <label
                         htmlFor="preferred-college"
-                        className="block text-xs font-semibold text-[#0B1F3A]"
+                        className="block text-xs font-bold text-[#0F2239]"
                       >
                         Preferred College <span className="text-rose-600">*</span>
                       </label>
@@ -325,12 +323,12 @@ export function AdmissionEnquirySection({
                         id="preferred-college"
                         value={preferredCollegeId}
                         onChange={(e) => handleCollegeChange(e.target.value)}
-                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#0D9488] focus:outline-none"
+                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#0F2239] focus:outline-none"
                       >
                         <option value="">Select a College</option>
                         {colleges.map((c) => (
                           <option key={c.id} value={c.id}>
-                            {c.name} ({c.district})
+                            {c.tneaCode ? `[${c.tneaCode}] ` : ''}{c.name} ({c.district})
                           </option>
                         ))}
                       </select>
@@ -344,7 +342,7 @@ export function AdmissionEnquirySection({
                     <div>
                       <label
                         htmlFor="preferred-course"
-                        className="block text-xs font-semibold text-[#0B1F3A]"
+                        className="block text-xs font-bold text-[#0F2239]"
                       >
                         Preferred Course
                       </label>
@@ -353,7 +351,7 @@ export function AdmissionEnquirySection({
                         value={preferredCourseId}
                         onChange={(e) => setPreferredCourseId(e.target.value)}
                         disabled={!selectedCollege}
-                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-[#0F172A] disabled:bg-slate-100 disabled:text-slate-400 focus:border-[#0D9488] focus:outline-none"
+                        className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 disabled:bg-slate-100 disabled:text-slate-400 focus:border-[#0F2239] focus:outline-none"
                       >
                         <option value="">
                           {selectedCollege
@@ -372,25 +370,25 @@ export function AdmissionEnquirySection({
                   <div>
                     <label
                       htmlFor="enquiry-message"
-                      className="block text-xs font-semibold text-[#0B1F3A]"
+                      className="block text-xs font-bold text-[#0F2239]"
                     >
-                      Message / Questions
+                      Message / Questions (Cut-off Marks, Scholarship, Hostel)
                     </label>
                     <textarea
                       id="enquiry-message"
                       rows={3}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Ask about management/counselling quota, hostel availability, or scholarship options..."
-                      className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#0D9488] focus:outline-none"
+                      placeholder="Enter your 12th cutoff mark, preferred branch, or questions regarding First Graduate / 7.5% government quota..."
+                      className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#0F2239] focus:outline-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#0B1F3A] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#132F54]"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F2239] px-6 py-3.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-[#1A365D]"
                   >
-                    <Send className="h-4 w-4 text-[#14B8A6]" />
+                    <Send className="h-4 w-4 text-amber-400" />
                     Submit Admission Enquiry
                   </button>
                 </form>
