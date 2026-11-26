@@ -4,6 +4,7 @@ import {
   AdmissionEnquirySection,
   type EnquiryPrefill,
 } from './components/AdmissionEnquirySection';
+import { ApplicationFormPageView } from './components/ApplicationFormPageView';
 import { CampusGallerySection } from './components/CampusGallerySection';
 import { CollegeCoursesPageView } from './components/CollegeCoursesPageView';
 import { CollegesPageView } from './components/CollegesPageView';
@@ -17,13 +18,15 @@ import { agencyConfig } from './data/agencyConfig';
 import { collegesData, tamilNaduZones } from './data/tamilNaduData';
 import type { College, Course } from './types/admissions';
 
-type ActiveView = 'home' | 'colleges' | 'college-details';
+type ActiveView = 'home' | 'colleges' | 'college-details' | 'application';
 
 export function App() {
   const [currentView, setCurrentView] = useState<ActiveView>('home');
   const [selectedZoneId, setSelectedZoneId] = useState<string | null>(null);
   const [activeCollege, setActiveCollege] = useState<College | null>(null);
-  const [enquiryPrefill, setEnquiryPrefill] = useState<EnquiryPrefill | null>(null);
+  const [applicationCollege, setApplicationCollege] = useState<College | null>(null);
+  const [applicationCourse, setApplicationCourse] = useState<Course | null>(null);
+  const [enquiryPrefill] = useState<EnquiryPrefill | null>(null);
 
   const totalCourses = useMemo(
     () => collegesData.reduce((acc, col) => acc + col.courses.length, 0),
@@ -76,20 +79,26 @@ export function App() {
   };
 
   const handleEnquireCourse = (college: College, course: Course) => {
-    setEnquiryPrefill({
-      collegeId: college.id,
-      courseId: course.id,
-      district: college.district,
-    });
-    setCurrentView('home');
-    setTimeout(() => {
-      scrollToSection('enquiry');
-    }, 120);
+    setApplicationCollege(college);
+    setApplicationCourse(course);
+    setCurrentView('application');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigate = (target: string) => {
+    if (target === 'application') {
+      setApplicationCollege(null);
+      setApplicationCourse(null);
+      setCurrentView('application');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    scrollToSection(target);
   };
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#FAF8F5] text-[#0A1A30]">
-      <Navbar onNavigate={scrollToSection} />
+      <Navbar onNavigate={handleNavigate} />
 
       <main>
         {currentView === 'home' && (
@@ -152,9 +161,24 @@ export function App() {
             onEnquireCourse={handleEnquireCourse}
           />
         )}
+
+        {currentView === 'application' && (
+          <ApplicationFormPageView
+            initialCollege={applicationCollege}
+            initialCourse={applicationCourse}
+            onBack={() => {
+              if (activeCollege) {
+                setCurrentView('college-details');
+              } else {
+                setCurrentView('home');
+              }
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
       </main>
 
-      <ContactFooter onNavigate={scrollToSection} />
+      <ContactFooter onNavigate={handleNavigate} />
 
       {/* Floating Always-Visible WhatsApp Icon (Bottom Right) */}
       <a

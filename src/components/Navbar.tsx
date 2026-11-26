@@ -12,7 +12,7 @@ const navLinks = [
   { label: 'Tamil Nadu Zones', target: 'zones' },
   { label: 'Gallery', target: 'gallery' },
   { label: 'Scholarships', target: 'scholarships' },
-  { label: 'Admission Enquiry', target: 'enquiry' },
+  { label: 'Application Form', target: 'application' },
   { label: 'Contact', target: 'contact' },
 ];
 
@@ -121,15 +121,15 @@ export function Navbar({ onNavigate }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Edura Primary CTA Button ("CONTACT US ->" in bright blue) */}
+          {/* Edura Primary CTA Button ("APPLY NOW ->" in bright blue) */}
           <div className="hidden items-center gap-3 md:flex">
             <button
               type="button"
-              onClick={() => handleLinkClick('enquiry')}
+              onClick={() => handleLinkClick('application')}
               className="inline-flex items-center gap-2 rounded-xl bg-[#2563EB] px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-[#1D4ED8]"
             >
               <PhoneCall className="h-4 w-4" />
-              CONTACT US &rarr;
+              APPLY NOW &rarr;
             </button>
           </div>
 
