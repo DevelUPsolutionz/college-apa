@@ -356,7 +356,7 @@ export function CollegeCoursesPageView({
                           className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F2239] px-6 py-3 text-sm font-bold text-white shadow-sm transition-all hover:bg-[#1A365D] sm:w-auto"
                         >
                           <Send className="h-4 w-4" />
-                          Enquire About This Course &rarr;
+                          Apply &rarr;
                         </button>
                       </div>
                     </motion.div>

@@ -14,7 +14,7 @@ import {
   Users,
 } from 'lucide-react';
 import { agencyConfig } from '../data/agencyConfig';
-import { collegesData } from '../data/tamilNaduData';
+import { collegesData, tamilNaduZones } from '../data/tamilNaduData';
 import type { College, Course } from '../types/admissions';
 import { currentAcademicYear } from '../utils/academicYear';
 
@@ -29,13 +29,22 @@ export function ApplicationFormPageView({
   initialCourse,
   onBack,
 }: ApplicationFormPageViewProps) {
-  // Pre-selected or chosen college/course
-  const [selectedCollegeId, setSelectedCollegeId] = useState(
-    initialCollege?.id || collegesData[0]?.id || ''
+  // Pre-selected or chosen zone, college, and course
+  const [selectedZoneId, setSelectedZoneId] = useState<string>(
+    initialCollege?.zoneId || ''
   );
-  const [selectedCourseId, setSelectedCourseId] = useState(
+  const [selectedCollegeId, setSelectedCollegeId] = useState<string>(
+    initialCollege?.id || ''
+  );
+  const [selectedCourseId, setSelectedCourseId] = useState<string>(
     initialCourse?.id || ''
   );
+
+  // Filter colleges based on chosen zone (or show all if no zone is chosen yet)
+  const filteredColleges = useMemo(() => {
+    if (!selectedZoneId) return collegesData;
+    return collegesData.filter((c) => c.zoneId === selectedZoneId);
+  }, [selectedZoneId]);
 
   const selectedCollege = useMemo(
     () => collegesData.find((c) => c.id === selectedCollegeId) || null,
@@ -48,7 +57,7 @@ export function ApplicationFormPageView({
   );
 
   const selectedCourse = useMemo(
-    () => availableCourses.find((c) => c.id === selectedCourseId) || availableCourses[0] || null,
+    () => availableCourses.find((c) => c.id === selectedCourseId) || null,
     [availableCourses, selectedCourseId]
   );
 
@@ -173,9 +182,21 @@ _Kindly review this application and guide me on admission procedure, transparent
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!selectedCollegeId) {
+      setValidationError('Please choose your target college.');
+      window.scrollTo({ top: 250, behavior: 'smooth' });
+      return;
+    }
+
+    if (!selectedCourseId) {
+      setValidationError('Please choose your applied course.');
+      window.scrollTo({ top: 250, behavior: 'smooth' });
+      return;
+    }
+
     if (!studentName.trim()) {
       setValidationError('Please enter the student full name.');
-      window.scrollTo({ top: 300, behavior: 'smooth' });
+      window.scrollTo({ top: 350, behavior: 'smooth' });
       return;
     }
 
@@ -259,7 +280,7 @@ _Kindly review this application and guide me on admission procedure, transparent
           </div>
 
           {/* Selected College & Course Notification Banner */}
-          {selectedCollege && (
+          {selectedCollege && selectedCourse && (
             <div className="mt-6 rounded-2xl bg-blue-50 border border-blue-100 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#1D4ED8] text-white">
@@ -273,8 +294,8 @@ _Kindly review this application and guide me on admission procedure, transparent
                     {selectedCollege.name} ({selectedCollege.district})
                   </h2>
                   <p className="text-xs text-slate-600">
-                    Applying for: <strong className="text-[#0F2239]">{selectedCourse?.name}</strong> •{' '}
-                    {selectedCourse?.durationLabel}
+                    Applying for: <strong className="text-[#0F2239]">{selectedCourse.name}</strong> •{' '}
+                    {selectedCourse.durationLabel}
                   </p>
                 </div>
               </div>
@@ -359,11 +380,39 @@ _Kindly review this application and guide me on admission procedure, transparent
             <div className="flex items-center gap-2.5 border-b border-slate-100 pb-4">
               <Building2 className="h-5 w-5 text-[#1D4ED8]" />
               <h3 className="font-display text-lg font-black text-[#0F2239]">
-                1. Target College &amp; Course Details
+                1. Target Zone, College &amp; Course Details
               </h3>
             </div>
 
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            <div className="mt-6 grid gap-5 sm:grid-cols-3">
+              {/* 1. Zone Selection Dropdown */}
+              <div>
+                <label className="block text-xs font-bold text-[#0F2239] uppercase">
+                  Tamil Nadu Zone / Region <span className="text-rose-500">*</span>
+                </label>
+                <select
+                  value={selectedZoneId}
+                  onChange={(e) => {
+                    const newZoneId = e.target.value;
+                    setSelectedZoneId(newZoneId);
+                    if (selectedCollege && newZoneId && selectedCollege.zoneId !== newZoneId) {
+                      setSelectedCollegeId('');
+                      setSelectedCourseId('');
+                    }
+                  }}
+                  className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#1D4ED8] focus:outline-none"
+                  required
+                >
+                  <option value="">-- Choose Zone / Region --</option>
+                  {tamilNaduZones.map((z) => (
+                    <option key={z.id} value={z.id}>
+                      {z.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* 2. College Selection Dropdown (filtered by zone) */}
               <div>
                 <label className="block text-xs font-bold text-[#0F2239] uppercase">
                   Preferred College <span className="text-rose-500">*</span>
@@ -371,16 +420,23 @@ _Kindly review this application and guide me on admission procedure, transparent
                 <select
                   value={selectedCollegeId}
                   onChange={(e) => {
-                    setSelectedCollegeId(e.target.value);
-                    const col = collegesData.find((c) => c.id === e.target.value);
-                    if (col?.courses[0]) {
-                      setSelectedCourseId(col.courses[0].id);
+                    const colId = e.target.value;
+                    setSelectedCollegeId(colId);
+                    setSelectedCourseId('');
+                    if (colId) {
+                      const col = collegesData.find((c) => c.id === colId);
+                      if (col && col.zoneId) {
+                        setSelectedZoneId(col.zoneId);
+                      }
                     }
                   }}
                   className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#1D4ED8] focus:outline-none"
                   required
                 >
-                  {collegesData.map((col) => (
+                  <option value="">
+                    {selectedZoneId ? '-- Choose College in this Zone --' : '-- Choose College --'}
+                  </option>
+                  {filteredColleges.map((col) => (
                     <option key={col.id} value={col.id}>
                       {col.name} ({col.district})
                     </option>
@@ -388,6 +444,7 @@ _Kindly review this application and guide me on admission procedure, transparent
                 </select>
               </div>
 
+              {/* 3. Course Selection Dropdown */}
               <div>
                 <label className="block text-xs font-bold text-[#0F2239] uppercase">
                   Course Applied <span className="text-rose-500">*</span>
@@ -395,9 +452,13 @@ _Kindly review this application and guide me on admission procedure, transparent
                 <select
                   value={selectedCourseId}
                   onChange={(e) => setSelectedCourseId(e.target.value)}
-                  className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#1D4ED8] focus:outline-none"
+                  disabled={!selectedCollegeId}
+                  className="mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-[#1D4ED8] focus:outline-none disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed"
                   required
                 >
+                  <option value="">
+                    {selectedCollegeId ? '-- Select Course --' : '-- Select College First --'}
+                  </option>
                   {availableCourses.map((crs) => (
                     <option key={crs.id} value={crs.id}>
                       {crs.name} ({crs.durationLabel})
@@ -958,7 +1019,7 @@ _Kindly review this application and guide me on admission procedure, transparent
                 Submit Admission Application
               </h4>
               <p className="mt-1 text-xs text-slate-500">
-                Please verify all fields. Clicking Submit will automatically send your full application to our WhatsApp admission desk.
+                Please verify all fields.
               </p>
             </div>
 
