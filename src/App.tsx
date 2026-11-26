@@ -113,7 +113,6 @@ export function App() {
             {/* 2nd Section: About College APA & Dr. B. Ramesh Advisory */}
             <AboutAgencySection
               onExploreZones={() => scrollToSection('zones')}
-              onEnquire={() => scrollToSection('enquiry')}
             />
 
             {/* 3rd Section: Tamil Nadu Discovery Zones */}

@@ -13,12 +13,10 @@ import { agencyConfig } from '../data/agencyConfig';
 
 interface AboutAgencySectionProps {
   onExploreZones?: () => void;
-  onEnquire?: () => void;
 }
 
 export function AboutAgencySection({
   onExploreZones,
-  onEnquire,
 }: AboutAgencySectionProps) {
   return (
     <section
@@ -194,16 +192,6 @@ export function AboutAgencySection({
                 <Phone className="h-4 w-4 text-[#2563EB]" />
                 <span>Talk to Dr. B. Ramesh</span>
               </a>
-
-              {onEnquire && (
-                <button
-                  type="button"
-                  onClick={onEnquire}
-                  className="text-xs font-bold text-slate-600 underline hover:text-[#2563EB]"
-                >
-                  Request Callback
-                </button>
-              )}
             </div>
           </div>
         </div>
