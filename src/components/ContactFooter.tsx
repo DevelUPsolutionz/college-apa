@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  ArrowUp,
   Globe,
   Mail,
   MapPin,
@@ -22,10 +21,6 @@ export function ContactFooter({ onNavigate }: ContactFooterProps) {
     if (newsletterEmail.trim()) {
       setSubscribed(true);
     }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -347,9 +342,9 @@ export function ContactFooter({ onNavigate }: ContactFooterProps) {
         </div>
 
         {/* ========================================================
-            ROW 3: Bottom Copyright Bar with Back to Top Button
+            ROW 3: Bottom Copyright Bar
             ======================================================== */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 text-xs text-slate-400 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 text-xs text-slate-400 sm:flex-row sm:pr-28">
           <p>
             Copyright &copy; {agencyConfig.copyrightYear}{' '}
             <span className="font-bold text-[#60A5FA]">College APA</span>. All Rights Reserved.
@@ -362,16 +357,6 @@ export function ContactFooter({ onNavigate }: ContactFooterProps) {
             <a href="#about" onClick={() => onNavigate('about')} className="hover:text-white transition-colors">
               Terms &amp; Condition
             </a>
-
-            {/* Circular Scroll to Top Button (Matching Edura in bottom right) */}
-            <button
-              type="button"
-              onClick={scrollToTop}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-blue-500/50 bg-[#2563EB] text-white hover:bg-[#1D4ED8] transition-colors shadow-sm"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp className="h-4 w-4" />
-            </button>
           </div>
         </div>
       </div>
