@@ -124,27 +124,37 @@ export function AdmissionEnquirySection({
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Left Context Column: Funky & Eye-Catching Golden-Yellow Card (Matching Logo APA Yellow) */}
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#FBBF24] via-[#F59E0B] to-[#D97706] p-7 sm:p-9 lg:p-10 text-[#071322] shadow-2xl shadow-amber-500/25 border-3 border-amber-300/80 flex flex-col justify-between lg:col-span-5">
+          {/* Left Context Column: Elegant Light Golden-Yellow Card with Campus Image Background */}
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#FFFDF5] via-[#FEF3C7] to-[#FDE68A] p-7 sm:p-9 lg:p-10 text-[#071322] shadow-xl shadow-amber-900/5 border-2 border-amber-300/70 flex flex-col justify-between lg:col-span-5">
+            {/* Background Image with Soft Light-Golden Overlay */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="/hero-students.jpg"
+                alt="Students admission guidance background"
+                className="h-full w-full object-cover object-center opacity-20 filter grayscale mix-blend-multiply"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FFFDF5]/92 via-[#FEF3C7]/85 to-[#FDE68A]/80" />
+            </div>
+
             {/* Playful background doodles & organic shapes */}
             <div
-              className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-white/20 blur-xl"
+              className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-white/40 blur-xl"
               aria-hidden="true"
             />
             <div
-              className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-amber-600/30 blur-2xl"
+              className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-amber-400/20 blur-2xl"
               aria-hidden="true"
             />
 
             {/* Playful floating sparkles */}
             <div
-              className="pointer-events-none absolute top-6 right-6 opacity-40 select-none text-2xl"
+              className="pointer-events-none absolute top-6 right-6 opacity-40 select-none text-2xl z-10"
               aria-hidden="true"
             >
               ✨
             </div>
             <div
-              className="pointer-events-none absolute bottom-36 right-4 opacity-30 select-none text-xl"
+              className="pointer-events-none absolute bottom-36 right-4 opacity-30 select-none text-xl z-10"
               aria-hidden="true"
             >
               🎓
@@ -152,8 +162,8 @@ export function AdmissionEnquirySection({
 
             <div className="relative z-10">
               {/* Tilted Sticker Pill Badge */}
-              <div className="inline-flex -rotate-2 transform items-center gap-2 rounded-full bg-[#071322] px-4 py-1.5 text-xs font-black tracking-wider text-[#FBBF24] shadow-md transition-transform hover:rotate-0">
-                <Sparkles className="h-3.5 w-3.5 text-[#FBBF24]" />
+              <div className="inline-flex -rotate-2 transform items-center gap-2 rounded-full bg-[#071322] px-4 py-1.5 text-xs font-black tracking-wider text-[#F59E0B] shadow-md transition-transform hover:rotate-0">
+                <Sparkles className="h-3.5 w-3.5 text-[#F59E0B]" />
                 <span>DIRECT COUNSELLING DESK</span>
               </div>
 
@@ -163,36 +173,36 @@ export function AdmissionEnquirySection({
               </h2>
 
               {/* Subtitle / Paragraph */}
-              <p className="mt-4 text-base font-medium leading-relaxed text-[#071322]/90">
-                Connect directly with <strong className="font-black text-[#071322] underline decoration-amber-800/40 decoration-2">Dr. B. Ramesh</strong> for TNEA engineering cutoff calculation, medical/allied health selection, scholarship eligibility (First Graduate, 7.5%, PMSS), and management quota seats.
+              <p className="mt-4 text-base font-medium leading-relaxed text-[#071322]/85">
+                Connect directly with <strong className="font-black text-[#071322] underline decoration-[#F59E0B] decoration-2">Dr. B. Ramesh</strong> for TNEA engineering cutoff calculation, medical/allied health selection, scholarship eligibility (First Graduate, 7.5%, PMSS), and management quota seats.
               </p>
 
               {/* 3 Funky Feature Badges / Chips */}
               <div className="mt-6 flex flex-wrap gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/40 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-white/50 shadow-xs">
-                  <Zap className="h-3.5 w-3.5 text-[#071322]" />
+                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/80 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-amber-300/80 shadow-xs">
+                  <Zap className="h-3.5 w-3.5 text-[#D97706]" />
                   Instant Cutoff Calculation
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/40 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-white/50 shadow-xs">
-                  <GraduationCap className="h-3.5 w-3.5 text-[#071322]" />
+                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/80 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-amber-300/80 shadow-xs">
+                  <GraduationCap className="h-3.5 w-3.5 text-[#D97706]" />
                   180+ Colleges &amp; Deemed
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/40 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-white/50 shadow-xs">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#071322]" />
+                <span className="inline-flex items-center gap-1.5 rounded-xl bg-white/80 backdrop-blur-xs px-3 py-1.5 text-xs font-bold text-[#071322] border border-amber-300/80 shadow-xs">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
                   Zero Consultation Fee
                 </span>
               </div>
 
               {/* Selected Course summary pill (if prefilled) */}
               {selectedCollege && selectedCourse && (
-                <div className="mt-5 rounded-2xl border-2 border-dashed border-[#071322]/30 bg-white/80 p-4 backdrop-blur-xs">
-                  <p className="text-[11px] font-black tracking-wider text-[#071322]/70 uppercase">
+                <div className="mt-5 rounded-2xl border-2 border-dashed border-amber-400/80 bg-white/90 p-4 shadow-sm backdrop-blur-xs">
+                  <p className="text-[11px] font-black tracking-wider text-[#B45309] uppercase">
                     ⭐ Shortlisted for Direct Enquiry
                   </p>
                   <p className="font-display mt-0.5 text-sm font-bold text-[#071322]">
                     {selectedCourse.name}
                   </p>
-                  <p className="text-xs font-medium text-[#071322]/80">
+                  <p className="text-xs font-medium text-slate-600">
                     {selectedCollege.name} • {selectedCollege.district}
                   </p>
                 </div>
@@ -200,9 +210,9 @@ export function AdmissionEnquirySection({
             </div>
 
             {/* Direct WhatsApp Card with playful chat bubble styling */}
-            <div className="relative z-10 mt-8 rounded-3xl bg-white p-5 sm:p-6 shadow-xl border-2 border-white/90">
+            <div className="relative z-10 mt-8 rounded-3xl bg-white p-5 sm:p-6 shadow-lg border border-amber-200/80">
               {/* Cute chat tail indicator */}
-              <div className="absolute -top-2.5 left-8 h-4 w-4 rotate-45 bg-white border-t-2 border-l-2 border-white/90" />
+              <div className="absolute -top-2.5 left-8 h-4 w-4 rotate-45 bg-white border-t border-l border-amber-200/80" />
 
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-bold text-emerald-800">
@@ -223,7 +233,7 @@ export function AdmissionEnquirySection({
                 href={buildWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#071322] px-5 py-3 text-sm font-black text-[#FBBF24] shadow-md transition-all hover:bg-[#1A365D] hover:scale-[1.02]"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#071322] px-5 py-3 text-sm font-black text-[#F59E0B] shadow-md transition-all hover:bg-[#1A365D] hover:scale-[1.02]"
               >
                 <MessageCircle className="h-4 w-4 text-emerald-400" />
                 <span>Chat on WhatsApp ({agencyConfig.whatsappDisplay})</span>
@@ -231,8 +241,8 @@ export function AdmissionEnquirySection({
             </div>
 
             {/* Bottom Guarantee */}
-            <div className="relative z-10 mt-5 flex items-center justify-center gap-2 text-xs font-bold text-[#071322]/80">
-              <ShieldCheck className="h-4 w-4 shrink-0 text-[#071322]" />
+            <div className="relative z-10 mt-5 flex items-center justify-center gap-2 text-xs font-bold text-[#071322]/75">
+              <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-700" />
               <span>100% Confidential &amp; Verified Advisory</span>
             </div>
           </div>
