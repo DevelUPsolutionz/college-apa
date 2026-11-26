@@ -61,14 +61,14 @@ export function CounsellingGuidanceBanner({ onEnquire }: CounsellingGuidanceBann
             2. MAIN DARK HERO-STYLE BANNER (Matching Image 2)
             ======================================================== */}
         <div className="relative overflow-hidden rounded-3xl bg-[#071322] px-6 pt-20 pb-16 sm:px-12 sm:pt-28 sm:pb-20 lg:px-16 text-center shadow-2xl">
-          {/* Background Photo Overlay */}
+          {/* Background Photo Overlay (Matching Edura Students Banner) */}
           <div className="absolute inset-0 z-0">
             <img
-              src="/hero-students.jpg"
+              src="/counselling-bg.jpg"
               alt="Students counselling background"
-              className="h-full w-full object-cover object-center opacity-20 filter grayscale"
+              className="h-full w-full object-cover object-center opacity-35 filter brightness-75 contrast-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#071322] via-[#071322]/85 to-[#071322]/95" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#071322] via-[#071322]/75 to-[#071322]/80" />
           </div>
 
           {/* Graphical Accents from Image 2 */}
