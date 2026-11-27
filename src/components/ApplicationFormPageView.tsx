@@ -247,31 +247,31 @@ _Kindly review this application and guide me on admission procedure, transparent
         </button>
 
         {/* Application Header Card */}
-        <div className="mt-4 overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-b border-slate-100 pb-6">
-            <div className="flex items-center gap-4">
+        <div className="mt-4 overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 sm:p-8 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 border-b border-slate-100 pb-6">
+            <div className="flex items-start sm:items-center gap-3.5 sm:gap-4">
               <img
                 src="/college-apa-logo.png"
                 alt="College APA"
-                className="h-12 w-auto object-contain"
+                className="h-10 sm:h-12 w-auto object-contain shrink-0"
               />
               <div>
-                <span className="text-xs font-bold tracking-wider text-[#1D4ED8] uppercase">
+                <span className="text-[11px] sm:text-xs font-bold tracking-wider text-[#1D4ED8] uppercase">
                   Official Admission Desk • {currentAcademicYear.shortYear}
                 </span>
-                <h1 className="font-display text-2xl sm:text-3xl font-black text-[#0F2239]">
+                <h1 className="font-display text-xl sm:text-2xl md:text-3xl font-black text-[#0F2239]">
                   Student Admission Application Form
                 </h1>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-500 mt-0.5">
                   College APA Educational Information &amp; Guidance Centre • Chief Counsellor: Dr. B. Ramesh
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 w-full sm:w-auto">
               <a
                 href={`tel:${agencyConfig.phone.replace(/\s+/g, '')}`}
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors"
               >
                 <Phone className="h-3.5 w-3.5 text-[#1D4ED8]" />
                 <span>Call Helpline: {agencyConfig.phone}</span>

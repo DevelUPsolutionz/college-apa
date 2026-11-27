@@ -22,11 +22,70 @@
 }
 
 @layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
     background-color: #F8FAFC;
     color: #1E293B;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+    width: 100%;
+    /* Prevents pull-to-refresh reload glitches on mobile web apps */
+    overscroll-behavior-y: none;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Universal Media & Image Responsiveness */
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Text overflow & wrapping safety across all screen widths */
+  p, span, h1, h2, h3, h4, h5, h6, a, button, label {
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  /* Senior Frontend Mobile Form Fix:
+     Prevents iOS Safari & Android WebKit from auto-zooming into inputs on focus,
+     preserving the user's 100% zoom default view across mobile devices */
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  @media (min-width: 640px) {
+    input, select, textarea {
+      font-size: 14px;
+    }
   }
 
   h1, h2, h3, h4, .font-display {

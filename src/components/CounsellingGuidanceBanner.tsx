@@ -15,10 +15,10 @@ export function CounsellingGuidanceBanner({ onEnquire }: CounsellingGuidanceBann
             1. TOP FLOATING STATS BAR (Matching Image 2 blue header)
             ======================================================== */}
         <div className="relative z-20 -mb-10 sm:-mb-14 mx-auto max-w-5xl overflow-hidden rounded-2xl sm:rounded-3xl bg-[#2563EB] text-white shadow-2xl shadow-blue-900/30">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-y divide-white/15 md:divide-y-0 md:divide-x md:divide-white/15 py-6 sm:py-8 px-4 sm:px-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 py-4 sm:py-6 px-3 sm:px-6 text-center">
             {/* Stat 1 */}
-            <div className="p-3 sm:p-4">
-              <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+            <div className="p-3 sm:p-4 border-r border-b md:border-b-0 border-white/20">
+              <p className="font-display text-xl sm:text-3xl lg:text-4xl font-black text-white">
                 6 Zones
               </p>
               <p className="mt-1 text-xs sm:text-sm font-medium text-blue-100">
@@ -27,8 +27,8 @@ export function CounsellingGuidanceBanner({ onEnquire }: CounsellingGuidanceBann
             </div>
 
             {/* Stat 2 */}
-            <div className="p-3 sm:p-4">
-              <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+            <div className="p-3 sm:p-4 border-b md:border-b-0 md:border-r border-white/20">
+              <p className="font-display text-xl sm:text-3xl lg:text-4xl font-black text-white">
                 180+
               </p>
               <p className="mt-1 text-xs sm:text-sm font-medium text-blue-100">
@@ -37,8 +37,8 @@ export function CounsellingGuidanceBanner({ onEnquire }: CounsellingGuidanceBann
             </div>
 
             {/* Stat 3 */}
-            <div className="p-3 sm:p-4">
-              <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+            <div className="p-3 sm:p-4 border-r border-white/20">
+              <p className="font-display text-xl sm:text-3xl lg:text-4xl font-black text-white">
                 1,000+
               </p>
               <p className="mt-1 text-xs sm:text-sm font-medium text-blue-100">
@@ -48,7 +48,7 @@ export function CounsellingGuidanceBanner({ onEnquire }: CounsellingGuidanceBann
 
             {/* Stat 4 */}
             <div className="p-3 sm:p-4">
-              <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+              <p className="font-display text-xl sm:text-3xl lg:text-4xl font-black text-white">
                 100% Free
               </p>
               <p className="mt-1 text-xs sm:text-sm font-medium text-blue-100">

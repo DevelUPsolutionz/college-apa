@@ -112,7 +112,7 @@ export function ContactFooter({ onNavigate }: ContactFooterProps) {
         {/* ========================================================
             ROW 2: Edura 4-Column Main Footer Body inside Shining Grain Box
             ======================================================== */}
-        <div className="relative my-6 overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent p-8 sm:p-10 lg:p-12 shadow-2xl shadow-blue-950/40 backdrop-blur-xs">
+        <div className="relative my-6 overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent p-5 sm:p-8 lg:p-12 shadow-2xl shadow-blue-950/40 backdrop-blur-xs">
           {/* Light shining radial spotlight */}
           <div
             className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-4/5 rounded-full bg-gradient-to-b from-[#38BDF8]/25 via-[#2563EB]/15 to-transparent blur-3xl"
@@ -142,8 +142,8 @@ export function ContactFooter({ onNavigate }: ContactFooterProps) {
             <rect width="100%" height="100%" filter="url(#footerGrainTexture)" />
           </svg>
 
-          {/* Inner 4-Column Grid */}
-          <div className="relative z-10 grid gap-10 md:grid-cols-12 lg:gap-12">
+          {/* Inner 4-Column Grid: 1 col (mobile), 2 col (tablet), 12 col (desktop/large monitors) */}
+          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12">
             {/* Col 1: Logo, Mission Description & Social Media Icons */}
             <div className="md:col-span-4">
               <div className="flex items-center gap-3">
@@ -272,7 +272,7 @@ export function ContactFooter({ onNavigate }: ContactFooterProps) {
                 <li>
                   <button
                     type="button"
-                    onClick={() => onNavigate('enquiry')}
+                    onClick={() => onNavigate('application')}
                     className="flex items-center gap-2 hover:text-[#60A5FA] transition-colors"
                   >
                     <span className="text-[#38BDF8]">•</span> Admission Form

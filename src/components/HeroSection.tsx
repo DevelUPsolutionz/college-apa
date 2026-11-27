@@ -97,8 +97,8 @@ export function HeroSection({
             className="lg:col-span-7"
           >
             {/* Pill Badge matching Edura ("35% OFF" style) - Dynamic for all future years */}
-            <div className="flex items-center gap-3">
-              <span className="rounded-full bg-[#2563EB] px-3.5 py-1 text-xs font-black tracking-wider text-white uppercase shadow-sm">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <span className="rounded-full bg-[#2563EB] px-3.5 py-1 text-xs font-black tracking-wider text-white uppercase shadow-sm shrink-0">
                 {currentAcademicYear.badgeLabel}
               </span>
               <span className="text-xs font-bold tracking-widest text-slate-300 uppercase">
@@ -106,8 +106,8 @@ export function HeroSection({
               </span>
             </div>
 
-            {/* Giant Headline: "Find the Right College. Build the Right Future." */}
-            <h1 className="font-display mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-[3.8rem] lg:leading-[1.12]">
+            {/* Giant Headline: Fluid typography perfectly scaled across 320px up to 4K displays */}
+            <h1 className="font-display mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[3.9rem] font-extrabold tracking-tight leading-[1.18] sm:leading-[1.12]">
               Find the Right College.{' '}
               <br className="hidden sm:inline" />
               Build the Right{' '}
@@ -183,7 +183,7 @@ export function HeroSection({
               />
 
               {/* Circular Student Photo Frame with Thick White Border (Exact Edura Hero Design) */}
-              <div className="relative h-72 w-72 sm:h-96 sm:w-96 md:h-[420px] md:w-[420px] rounded-full overflow-hidden border-[10px] sm:border-[14px] border-white shadow-2xl z-10 bg-slate-200">
+              <div className="relative h-60 w-60 sm:h-80 sm:w-80 md:h-[390px] md:w-[390px] lg:h-[430px] lg:w-[430px] max-w-[calc(100vw-3rem)] max-h-[calc(100vw-3rem)] rounded-full overflow-hidden border-[8px] sm:border-[12px] md:border-[14px] border-white shadow-2xl z-10 bg-slate-200">
                 <img
                   src="/hero-students.jpg"
                   alt="Happy College Students"
@@ -191,15 +191,15 @@ export function HeroSection({
                 />
 
                 {/* Floating Stat Badge on bottom-left of circle */}
-                <div className="absolute bottom-6 left-6 z-20 rounded-2xl bg-white/95 backdrop-blur-md p-3.5 shadow-xl border border-slate-100 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#2563EB] text-white">
-                    <Sparkles className="h-5 w-5" />
+                <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-20 rounded-2xl bg-white/95 backdrop-blur-md p-2.5 sm:p-3.5 shadow-xl border border-slate-100 flex items-center gap-2.5 sm:gap-3 max-w-[calc(100%-2rem)]">
+                  <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-[#2563EB] text-white">
+                    <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
                   <div>
-                    <span className="block font-display text-sm font-black text-[#0A1626]">
+                    <span className="block font-display text-xs sm:text-sm font-black text-[#0A1626]">
                       100% Free
                     </span>
-                    <span className="block text-[11px] font-bold text-slate-500">
+                    <span className="block text-[10px] sm:text-[11px] font-bold text-slate-500">
                       Admission Guidance
                     </span>
                   </div>

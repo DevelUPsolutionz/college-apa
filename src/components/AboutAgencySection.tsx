@@ -72,16 +72,16 @@ export function AboutAgencySection({
                 </div>
               </div>
 
-              {/* Floating Experience Badge (Edura Style) */}
-              <div className="absolute -top-6 -right-4 sm:-right-6 hidden sm:flex items-center gap-3 rounded-2xl border border-blue-100 bg-white p-3.5 shadow-xl">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB]">
-                  <Award className="h-6 w-6" />
+              {/* Floating Experience Badge (Edura Style - visible across all screen sizes) */}
+              <div className="absolute -top-4 -right-2 sm:-top-6 sm:-right-6 flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-blue-100 bg-white/95 backdrop-blur-xs p-2.5 sm:p-3.5 shadow-xl z-20">
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB]">
+                  <Award className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
                 <div>
-                  <p className="font-display text-xl font-extrabold text-[#0F2239]">
+                  <p className="font-display text-base sm:text-xl font-extrabold text-[#0F2239]">
                     5+ Years
                   </p>
-                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                  <p className="text-[10px] sm:text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
                     Admission Advisory
                   </p>
                 </div>

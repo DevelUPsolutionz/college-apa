@@ -29,14 +29,14 @@ export function Navbar({ onNavigate }: NavbarProps) {
           EDURA TOP UTILITY BAR (Electric Blue #0066FF / #2563EB)
           ======================================================== */}
       <div className="hidden border-b border-blue-600/20 bg-[#1D4ED8] text-xs text-blue-100 md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-6">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-y-2 px-4 py-2 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <span className="flex items-center gap-2">
-              <MapPin className="h-3.5 w-3.5 text-white" />
+              <MapPin className="h-3.5 w-3.5 text-white shrink-0" />
               <span>Kumbakonam, Thanjavur (DT), Tamil Nadu</span>
             </span>
             <span className="flex items-center gap-2">
-              <Mail className="h-3.5 w-3.5 text-white" />
+              <Mail className="h-3.5 w-3.5 text-white shrink-0" />
               <a href={`mailto:${agencyConfig.email}`} className="hover:text-white transition-colors">
                 {agencyConfig.email}
               </a>
@@ -52,7 +52,7 @@ export function Navbar({ onNavigate }: NavbarProps) {
               href={`tel:${agencyConfig.phone.replace(/\s+/g, '')}`}
               className="flex items-center gap-1.5 font-bold text-white hover:text-blue-200 transition-colors"
             >
-              <Phone className="h-3.5 w-3.5 text-white" />
+              <Phone className="h-3.5 w-3.5 text-white shrink-0" />
               <span>{agencyConfig.phone}</span>
             </a>
           </div>
@@ -132,41 +132,52 @@ export function Navbar({ onNavigate }: NavbarProps) {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - 44px standard accessible touch target */}
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-700 md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-700 md:hidden transition-colors active:scale-95"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5 text-slate-800" />}
+            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6 text-slate-800" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="border-t border-slate-100 bg-white px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-2">
+        <div className="border-t border-slate-100 bg-white px-4 py-4 md:hidden shadow-lg">
+          <div className="flex flex-col gap-1.5">
             {navLinks.map((item) => (
               <button
                 key={item.target}
                 type="button"
                 onClick={() => handleLinkClick(item.target)}
-                className="rounded-lg px-3 py-2.5 text-left text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-[#1D4ED8]"
+                className="rounded-xl px-3.5 py-3 text-left text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-[#1D4ED8] transition-colors"
               >
                 {item.label}
               </button>
             ))}
-            <button
-              type="button"
-              onClick={() => handleLinkClick('enquiry')}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-4 py-3 text-sm font-bold text-white"
-            >
-              <PhoneCall className="h-4 w-4" />
-              CONTACT US &rarr;
-            </button>
+            
+            <div className="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => handleLinkClick('application')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-4 py-3 text-sm font-bold text-white shadow-md shadow-blue-600/20 active:scale-95 transition-all"
+              >
+                <PhoneCall className="h-4 w-4" />
+                APPLY NOW &rarr;
+              </button>
+
+              <a
+                href={`tel:${agencyConfig.phone.replace(/\s+/g, '')}`}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors"
+              >
+                <Phone className="h-3.5 w-3.5 text-[#1D4ED8]" />
+                <span>Call Chief Counsellor: {agencyConfig.phone}</span>
+              </a>
+            </div>
           </div>
         </div>
       )}
